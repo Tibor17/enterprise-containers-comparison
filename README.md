@@ -45,11 +45,17 @@ Check the connection via browser with URL `http://localhost:8080/hello`
 The technology stack is:
 
 `Installed fraction:                  Logging - STABLE          org.wildfly.swarm:logging:2017.9.5`
+
 `Installed fraction:          Bean Validation - STABLE          org.wildfly.swarm:bean-validation:2017.9.5`
+
 `Installed fraction:        CDI Configuration - STABLE          org.wildfly.swarm:cdi-config:2017.9.5`
+
 `Installed fraction:                   JAX-RS - STABLE          org.wildfly.swarm:jaxrs:2017.9.5`
+
 `Installed fraction:             Transactions - STABLE          org.wildfly.swarm:transactions:2017.9.5`
+
 `Installed fraction:                      CDI - STABLE          org.wildfly.swarm:cdi:2017.9.5`
+
 `Installed fraction:                 Undertow - STABLE          org.wildfly.swarm:undertow:2017.9.5`
 
 
