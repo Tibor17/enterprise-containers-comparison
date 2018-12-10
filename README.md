@@ -38,7 +38,7 @@ References:
 
 [Apache TomeEE](http://tomee.apache.org/apache-tomee.html)
 
-# WildFly Swarm
+## WildFly Swarm
 
 Check the connection via browser with URL `http://localhost:8080/hello`
 
@@ -59,7 +59,7 @@ The technology stack is:
 `Installed fraction:                 Undertow - STABLE          org.wildfly.swarm:undertow:2017.9.5`
 
 
-# Spring Boot
+## Spring Boot
 
 
 CLI: `java -jar spring-boot-1.0.0-SNAPSHOT.jar`
