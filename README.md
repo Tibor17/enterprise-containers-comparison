@@ -59,6 +59,20 @@ The technology stack is:
 `Installed fraction:                 Undertow - STABLE          org.wildfly.swarm:undertow:2017.9.5`
 
 
+# Spring Boot
+
+
+CLI: `java -jar spring-boot-1.0.0-SNAPSHOT.jar`
+
+Check the connection:
+
+[GET /rest/hello](http://localhost:8080/rest/hello)
+
+[GET /rest/messages](http://localhost:8080/rest/messages)
+
+
+
+
 
 
 
