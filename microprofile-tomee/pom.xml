@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.github.tibor17</groupId>
+        <artifactId>enterprise-containers-comparison</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>microprofile-tomee</artifactId>
+
+    <properties>
+        <microprofile.platform.version>1.4</microprofile.platform.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--<dependency>
+            <groupId>org.apache.geronimo</groupId>
+            <artifactId>geronimo-microprofile-aggregator</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>-->
+
+        <!-- config -->
+        <dependency>
+            <groupId>org.eclipse.microprofile.config</groupId>
+            <artifactId>microprofile-config-api</artifactId>
+            <version>1.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.annotation.versioning</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.config</groupId>
+            <artifactId>geronimo-config-impl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <!-- fault-tolerance -->
+        <dependency>
+            <groupId>org.eclipse.microprofile.fault-tolerance</groupId>
+            <artifactId>microprofile-fault-tolerance-api</artifactId>
+            <version>1.1.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.annotation.versioning</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.safeguard</groupId>
+            <artifactId>safeguard-impl</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <!-- jwt auth -->
+        <dependency>
+            <groupId>org.eclipse.microprofile.jwt</groupId>
+            <artifactId>microprofile-jwt-auth-api</artifactId>
+            <version>1.1.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.annotation.versioning</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo</groupId>
+            <artifactId>geronimo-jwt-auth</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <!-- opentracing -->
+        <dependency>
+            <groupId>org.eclipse.microprofile.opentracing</groupId>
+            <artifactId>microprofile-opentracing-api</artifactId>
+            <version>1.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.inject</groupId>
+                    <artifactId>javax.inject</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.annotation.versioning</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.enterprise</groupId>
+                    <artifactId>cdi-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-atinject_1.0_spec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.ws.rs</groupId>
+                    <artifactId>javax.ws.rs-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.annotation</groupId>
+                    <artifactId>javax.annotation-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.opentracing</groupId>
+            <artifactId>opentracing-api</artifactId>
+            <version>0.31.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo</groupId>
+            <artifactId>geronimo-opentracing</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <!-- rest client -->
+        <dependency>
+            <groupId>org.eclipse.microprofile.rest.client</groupId>
+            <artifactId>microprofile-rest-client-api</artifactId>
+            <version>1.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.enterprise</groupId>
+                    <artifactId>cdi-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.inject</groupId>
+                    <artifactId>javax.inject</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.ws.rs</groupId>
+                    <artifactId>javax.ws.rs-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.annotation</groupId>
+                    <artifactId>javax.annotation-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-mp-client</artifactId>
+            <version>3.2.7</version>
+        </dependency>
+
+        <!-- from now it is outside MP releases -->
+
+        <!-- health -->
+        <dependency>
+            <groupId>org.eclipse.microprofile.health</groupId>
+            <artifactId>microprofile-health-api</artifactId>
+            <version>1.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.inject</groupId>
+                    <artifactId>javax.inject</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.annotation.versioning</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo</groupId>
+            <artifactId>geronimo-health</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <!-- metrics -->
+        <dependency>
+            <groupId>org.eclipse.microprofile.metrics</groupId>
+            <artifactId>microprofile-metrics-api</artifactId>
+            <version>1.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.annotation.versioning</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo</groupId>
+            <artifactId>geronimo-metrics</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <!-- openapi -->
+        <dependency>
+            <groupId>org.eclipse.microprofile.openapi</groupId>
+            <artifactId>microprofile-openapi-api</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo</groupId>
+            <artifactId>geronimo-openapi-impl</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomee.maven</groupId>
+                <artifactId>tomee-maven-plugin</artifactId>
+                <version>8.0.0-M1</version>
+                <executions>
+                    <execution>
+                        <id>package-tomee-mp</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <libs> <!-- MP 2.0 -->
+                        <!-- api -->
+                        <lib>org.eclipse.microprofile.config:microprofile-config-api:1.3</lib>
+                        <lib>org.eclipse.microprofile.fault-tolerance:microprofile-fault-tolerance-api:1.1.3</lib>
+                        <lib>org.eclipse.microprofile.jwt:microprofile-jwt-auth-api:1.1.1</lib>
+                        <lib>org.eclipse.microprofile.rest.client:microprofile-rest-client-api:1.1</lib>
+                        <lib>org.eclipse.microprofile.opentracing:microprofile-opentracing-api:1.1</lib>
+                        <lib>io.opentracing:opentracing-api:0.31.0</lib>
+                        <!-- impl -->
+                        <lib>org.apache.geronimo.config:geronimo-config-impl:1.2</lib>
+                        <lib>org.apache.geronimo.safeguard:safeguard-impl:1.0</lib>
+                        <lib>net.jodah:failsafe:1.0.4</lib>
+                        <lib>org.apache.geronimo:geronimo-jwt-auth:1.0.0</lib>
+                        <lib>org.apache.geronimo:geronimo-opentracing:1.0.0</lib>
+                        <lib>org.apache.cxf:cxf-rt-rs-mp-client:3.2.7</lib>
+                    </libs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -11,6 +11,8 @@
         <module>wildfly-swarm</module>
         <module>tomee-embedded</module>
         <module>spring-boot</module>
+        <module>microprofile-jakartaee</module>
+        <module>microprofile-tomee</module>
     </modules>
     <packaging>pom</packaging>
 
