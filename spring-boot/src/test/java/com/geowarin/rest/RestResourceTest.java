@@ -26,7 +26,7 @@ public class RestResourceTest extends JerseyTest {
     @Test
     public void testHello() {
         final String hello = target("hello").request().get(String.class);
-        assertThat(hello).isEqualTo("Hello World");
+        assertThat(hello).isEqualTo("{\"message\": \"Hello World\"}");
     }
 
     @Test
