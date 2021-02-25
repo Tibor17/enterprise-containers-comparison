@@ -14,7 +14,8 @@
     <packaging>war</packaging>
 
     <properties>
-        <version.wildfly.swarm>2017.9.5</version.wildfly.swarm>
+        <version.thorntail>2.7.0.Final</version.thorntail>
+        <version.wildfly.swarm>2018.5.0</version.wildfly.swarm>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -23,10 +24,17 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
+            <!--<dependency>
                 <groupId>org.wildfly.swarm</groupId>
                 <artifactId>bom-all</artifactId>
                 <version>${version.wildfly.swarm}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>-->
+            <dependency>
+                <groupId>io.thorntail</groupId>
+                <artifactId>bom</artifactId>
+                <version>${version.thorntail}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -36,7 +44,7 @@
     <build>
         <finalName>demo</finalName>
         <plugins>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.wildfly.swarm</groupId>
                 <artifactId>wildfly-swarm-plugin</artifactId>
                 <version>${version.wildfly.swarm}</version>
@@ -53,11 +61,32 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>-->
+            <plugin>
+                <groupId>io.thorntail</groupId>
+                <artifactId>thorntail-maven-plugin</artifactId>
+                <version>${version.thorntail}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>io.thorntail</groupId>
+            <artifactId>jaxrs</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.thorntail</groupId>
+            <artifactId>cdi</artifactId>
+        </dependency>
+
         <!-- Wildfly Swarm Fractions -->
         <!--<dependency>
           <groupId>org.wildfly.swarm</groupId>
