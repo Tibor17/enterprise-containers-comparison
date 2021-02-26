@@ -81,7 +81,7 @@ Download an older
 install it on your system, or set `JAVA_HOME`, example (on Windows) `set JAVA_HOME=c:\Program Files\Java\jdk1.8.0_45`
 or `export JAVA_HOME=/usr/local/jvm/jdk1.8.0_45` (on Linux).
 
-Download Elasticksearch from `https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.6.0.zip`,
+Download Elasticsearch from `https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.6.0.zip`,
 extract the ZIP archive `elasticsearch-1.6.0.zip`, rename the directory `elasticsearch-1.6.0` to `elasticsearch`.
 
 The Elasticsearch will create the directory named `data` with the database and Lucene indexes
@@ -141,7 +141,7 @@ mv kibana-4.1.1-linux-x64 kibana
 
 Run the Kibana as follows `./kibana/bin/kibana` on Linux or `kibana\bin\kibana.bat` on Windows.
 
-Open Kibana in browser, `http://localhost:5601`.
+Open Kibana in a browser, `http://localhost:5601`.
 
 ![Kibana](spring-boot/kibana.jpg "Kibana shows logs from the springboot application")
 
@@ -149,10 +149,29 @@ Open Kibana in browser, `http://localhost:5601`.
 Finally, run the application `cd spring-boot/target && java -jar spring-boot-1.0.0-SNAPSHOT.jar`.
 
 
-## Latest version of ELK
+## The Latest version of ELK - 7.11.1
 
 Download the ZIP archives from [here](https://www.elastic.co/downloads/).
+Rename the directories:
+- `elasticsearch-7.11.1` to `elasticsearch`
+- `kibana-7.11.1-windows-x86_64` to `kibana`
+- `logstash-7.11.1` to `logstash`
 
+then `cp logstash/config/logstash-sample.conf .` and change the port `5044` to `5000`.
 
+Change the location of Lucene database in Logstash - `echo "path.data: LOGSTASH_HOME/../data" >> logstash/config/logstash.yml`.  
+(Here should be an absolute path)
 
+Startup the Logstash `logstash/bin/logstash -f logstash.conf` (on Linux), or
+`logstash\bin\logstash.bat -f logstash.conf` (on Windows).
 
+Change the location of the Lucene database in Elasticsearch - `echo "path.data: ../data >> elasticsearch/config/elasticsearch.yml"`  
+(Here should be an absolute path)
+
+Start the Elasticsearch on Linux `./elasticsearch/bin/elasticsearch`, or
+on Windows `elasticsearch\bin\elasticsearch.bat`.
+
+The Elasticsearch server should successfully respond to `http://localhost:9200/`.
+
+Run the Kibana as follows `./kibana/bin/kibana` on Linux or `kibana\bin\kibana.bat` on Windows.
+Open Kibana in a browser, `http://localhost:5601`.
