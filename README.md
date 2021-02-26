@@ -78,7 +78,8 @@ Check the connection:
 #### Elasticsearch 1.6.3
 Download an older
 [Java SE Development Kit 8u45](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html) and
-install it on your system.
+install it on your system, or set `JAVA_HOME`, example (on Windows) `set JAVA_HOME=c:\Program Files\Java\jdk1.8.0_45`
+or `export JAVA_HOME=/usr/local/jvm/jdk1.8.0_45` (on Linux).
 
 Download Elasticksearch from `https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.6.0.zip`,
 extract the ZIP archive `elasticsearch-1.6.0.zip`, rename the directory `elasticsearch-1.6.0` to `elasticsearch`.
@@ -146,3 +147,12 @@ Open Kibana in browser, `http://localhost:5601`.
 
 #### Run the application
 Finally, run the application `cd spring-boot/target && java -jar spring-boot-1.0.0-SNAPSHOT.jar`.
+
+
+## Latest version of ELK
+
+Download the ZIP archives from [here](https://www.elastic.co/downloads/).
+
+
+
+
