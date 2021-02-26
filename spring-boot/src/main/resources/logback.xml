@@ -20,10 +20,10 @@
         </encoder>
     </appender>-->
     <appender name="STASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>127.0.0.1:5000</destination>
+        <destination>localhost:5000</destination>
         <!-- encoder is required -->
         <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
-        <keepAliveDuration>5 minutes</keepAliveDuration>
+        <keepAliveDuration>1 minutes</keepAliveDuration>
         <encoder>
             <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${HOSTNAME}] [%thread] %level %logger{36}@%method:%line - %msg%n</pattern>
         </encoder>
@@ -42,6 +42,7 @@
     </logger>
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
+        <appender-ref ref="STASH"/>
 <!--        <appender-ref ref="FILE"/>-->
     </root>
     <root level="WARN">
