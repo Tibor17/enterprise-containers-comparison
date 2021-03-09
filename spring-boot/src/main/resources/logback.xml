@@ -1,56 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <include resource="org/springframework/boot/logging/logback/base.xml"/>
-    <!--<property scope="context" name="log.fileExtension" value="log"/>
-    <property scope="context" name="log.directory" value="./logs"/>
-    <property name="LOG_DIR" value="./logs"/>
-    <property scope="context" name="log.fileName" value="LogFile"/>
-    <property name="LOG_FILE" value="LogFile"/>-->
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${HOSTNAME}] [%thread] [%t] %-7level %logger{36}@%method:%line - %msg%n</pattern>
-        </layout>
-    </appender>
-    <!--<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${log.directory}/${log.fileName}.%d{yyyy-MM-dd}.${log.fileExtension}</fileNamePattern>
-        </rollingPolicy>
-        <encoder>
-            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${HOSTNAME}] [%thread] %level %logger{36}@%method:%line - %msg%n</pattern>
-        </encoder>
-    </appender>-->
-    <appender name="STASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <appender name="ECS_JSON_TCP" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
         <destination>localhost:5000</destination>
-        <!-- encoder is required -->
-        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+        <encoder class="co.elastic.logging.logback.EcsEncoder">
+            <serviceName>${SERVICE_NAME:-spring-boot-application}</serviceName>
+        </encoder>
         <keepAliveDuration>1 minutes</keepAliveDuration>
         <encoder>
             <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${HOSTNAME}] [%thread] [%t] %-7level %logger{36}@%method:%line - %msg%n</pattern>
         </encoder>
     </appender>
-    <logger name="org.springframework.boot" level="INFO">
-        <appender-ref ref="STDOUT"/>
-    </logger>
-    <logger name="org.springframework.security" level="ERROR">
-        <appender-ref ref="STDOUT"/>
-    </logger>
-    <logger name="org.glassfish.jersey" level="DEBUG">
-        <appender-ref ref="STDOUT"/>
-    </logger>
-    <logger name="org.hibernate" level="TRACE">
-        <appender-ref ref="STDOUT"/>
-    </logger>
+    <logger name="com.geowarin" level="INFO"/>
+    <logger name="org.springframework.boot" level="INFO"/>
+    <logger name="org.springframework.security" level="ERROR"/>
+    <logger name="org.glassfish.jersey" level="DEBUG"/>
+    <logger name="org.hibernate" level="TRACE"/>
     <root level="INFO">
-        <appender-ref ref="STDOUT"/>
-        <appender-ref ref="STASH"/>
-<!--        <appender-ref ref="FILE"/>-->
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ECS_JSON_TCP"/>
     </root>
     <root level="WARN">
-        <appender-ref ref="STDOUT"/>
-        <appender-ref ref="STASH"/>
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ECS_JSON_TCP"/>
     </root>
     <root level="ERROR">
-        <appender-ref ref="STDOUT"/>
-        <appender-ref ref="STASH"/>
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ECS_JSON_TCP"/>
     </root>
 </configuration>
